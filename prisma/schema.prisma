@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+// 1 users memiliki banyak chat 
+model Users {
+  id String @id @default(uuid())
+  username String
+  telepon String @unique
+  sent Message[] @relation("Sender")
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+}
+
+model Message {
+  id Int @id @default(autoincrement())
+  content String
+  senderId String
+  sender Users @relation("Sender",fields: [senderId],references: [id])
+   createdAt  DateTime @default(now())
+}
