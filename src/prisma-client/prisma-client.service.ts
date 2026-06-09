@@ -7,7 +7,7 @@ export class PrismaClientService extends PrismaClient {
   constructor() {
     const adapter = new PrismaMariaDb({
       host: 'o1893_chat',
-      password: '[9de154MP+wSyK',
+      password: '9de154MP+wSyK',
       user: 'db.shared.octavia.id',
       database: 'o1893_chat',
       port: 3306,
