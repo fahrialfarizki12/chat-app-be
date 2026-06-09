@@ -38,10 +38,11 @@ export class UsersController {
     //kirim cookie
     res.cookie('token', users.token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production', // 🔥 penting
-      // sameSite: 'none', // 🔥 lebih aman untuk localhost
-      maxAge: 7 * 24 * 60 * 60 * 1000,
+      secure: true, // 🔥 penting
+      sameSite: 'strict', // 🔥 lebih aman untuk localhost
+      maxAge: 7 * 24 * 60 * 60 * 1000, //7 hari
       path: '/', // 🔥 wajib biar bisa dibaca proxy
+      domain: 'fahrialfarizki.biz.id',
     });
 
     return {
